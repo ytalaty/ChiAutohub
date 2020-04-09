@@ -5,6 +5,32 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Contact ChiAutohub</p>
+    <p>Contact Chicago Autohub</p>
+	<img src="/images/contact_us.jpg" width="300" height="200">
+	<div class="container">
+  <div style="text-align:center">
+    <h2>Contact Us</h2>
+    <p>Swing by for a look at our comprehensive vehicle inventory, or leave us a message:</p>
+  </div>
+  <div class="row">
+    <div class="column">
+      <form>
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" name="firstname" placeholder="Your name..">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+        <label for="city">City</label>
+        <select id="city" name="city">
+          <option value="Chicago">Chicago</option>
+          <option value="Illinois Suburbs">Illinois Suburbs</option>
+          <option value="Other">Other</option>
+        </select>
+        <label for="subject">Subject</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:170px"></textarea>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+  </div>
+</div>
   </body>
 </html>
