@@ -5,12 +5,31 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var layouts = require('express-ejs-layouts');
 
+const mariadb = require('mariadb/callback');
+const db = mariadb.createConnection({host: 'eagle.cdm.depaul.edu',
+user: 'ytalaty', password: 'ytalaty', 
+database: 'autohubdb'});
+
+// connect to database
+db.connect((err) => {
+  if (err) {
+	console.log("Unable to connect to database due to error: " + err);
+	res.render('error');
+  } else
+	{
+    console.log("Connected to DB");
+  }
+});
+global.db = db;
+
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var aboutRouter = require('./routes/about');
 var contactRouter = require('./routes/contact');
 var helpRouter = require('./routes/help');
 var privacyRouter = require('./routes/privacy');
+var customersRouter = require('./routes/customers');
 
 var app = express();
 
@@ -31,6 +50,7 @@ app.use('/about', aboutRouter);
 app.use('/contact', contactRouter);
 app.use('/help', helpRouter);
 app.use('/privacy', privacyRouter);
+app.use('/customers', customersRouter);
 
 
 // catch 404 and forward to error handler

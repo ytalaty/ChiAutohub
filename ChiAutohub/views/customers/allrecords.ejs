@@ -1,0 +1,43 @@
+<h1> Customers Table Listing </h1>
+<% if (allrecs.length > 0) {%>
+		<table border=1>
+			<tr>
+					<th> Customer ID </th>
+					<th> Customer First Name </th>
+					<th> Customer Last Name </th>
+					<th> Customer Email </th>
+					<th> Customer Phone </th>
+					<th> Customer Address </th>
+					<th> Customer City </th>
+					<th> Customer State </th>
+					<th> Customer Zip </th>
+					<th> Customer Username </th>
+					<th> Customer Password </th>
+					<th> Customer Create Date </th>
+			</tr>
+      	<% allrecs.forEach((recref, index) => { %>
+			<tr>
+				<td><%= recref.customer_id %></td>
+				<td><%= recref.firstname %></td>
+				<td><%= recref.lastname %></td>
+				<td><%= recref.email %></td>
+				<td><%= recref.phone %></td>
+				<td><%= recref.address %></td>
+				<td><%= recref.city %></td>
+				<td><%= recref.state %></td>
+				<td><%= recref.zip %></td>
+				<td><%= recref.username %></td>
+				<td><%= recref.password %></td>
+				<td><%= recref.create_date %></td>
+				<td><a href='/customers/<%= recref.customer_id %>'> Details</a></td>
+				<td><a href='/customers/<%= recref.customer_id %>/edit'>Edit</a></td>
+				<td><a href='/customers/<%= recref.customer_id %>/delete' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+
+                </tr>
+        <% }); %>
+		</table>
+
+        <% } else { %>
+            <p>Not Records Available</p>
+        <% } %>
+<p> <a href='/customers/addrecord'>Add New</a> </p>
