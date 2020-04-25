@@ -1,0 +1,14 @@
+<h1> Add New Sale</h1>
+<form action="/sales" method="post">
+   <table>
+		<tr> <td> Dealer ID: </td> <td> <input type="number" name="dealer_id" required> </td> </tr>
+		<tr> <td> Customer ID: </td> <td> <input type="number" name="customer_id" required>  </td> </tr>
+		<tr> <td> Sale ID: </td> <td> <input type="number" name="sale_id" required> </td> </tr>
+		<tr> <td> Sale Name: </td> <td> <textarea name="sale_name" rows="1" cols="20"> </td> </tr>
+		<tr> <td> Sale Amount: </td> <td> <input type="number" name="sale_amount" required> </td> </tr>
+		<tr> <td> Sale Description: </td> <td> <textarea name="sale_description" rows="10" cols="20"> </td> </tr>
+		<tr> <td> Sale Date: </td> <td> <input type="date" name="sale_date" required> </td> </tr>
+		<tr> <td> Vehicle ID: </td> <td> <input type="number" name="vehicle_id" required> </td> </tr>
+   </table>
+   <button type="submit">Save</button>
+</form>
