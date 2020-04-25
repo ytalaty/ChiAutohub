@@ -65,7 +65,7 @@ db.query(insertquery,[req.body.dealer_id, req.body.customer_id, req.body.sale_id
 // Route to edit one specific record.
 // ==================================================
 router.get('/:recordid/edit', function(req, res, next) {
-let query = "SELECT dealer_id, customer_id, sale_name, sale_amount, sale_description, sale_date, vehicle_id FROM sales WHERE sale_id = " + req.params.recordid;  
+let query = "SELECT dealer_id, customer_id, sale_id, sale_name, sale_amount, sale_description, sale_date, vehicle_id FROM sales WHERE sale_id = " + req.params.recordid;  
 
   // execute query
   db.query(query, (err, result) => {
