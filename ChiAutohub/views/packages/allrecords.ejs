@@ -1,0 +1,29 @@
+<h1> Packages Table Listing </h1>
+<% if (allrecs.length > 0) {%>
+		<table border=1>
+			<tr>
+					<th> Dealer ID </th>
+					<th> Package ID </th>
+					<th> Sale ID </th>
+					<th> Package Name </th>
+					<th> Vehicle ID </th>
+			</tr>
+      	<% allrecs.forEach((recref, index) => { %>
+			<tr>
+				<td><%= recref.dealer_id %></td>
+				<td><%= recref.package_id %></td>
+				<td><%= recref.sale_id %></td>
+				<td><%= recref.package_name %></td>
+				<td><%= recref.vehicle_id %></td>
+				<td><a href='/packages/<%= recref.package_id %>'> Details</a></td>
+				<td><a href='/packages/<%= recref.package_id %>/edit'>Edit</a></td>
+				<td><a href='/packages/<%= recref.package_id %>/delete' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+
+                </tr>
+        <% }); %>
+		</table>
+
+        <% } else { %>
+            <p>Not Records Available</p>
+        <% } %>
+<p> <a href='/packages/addrecord'>Add New</a> </p>
