@@ -1,0 +1,10 @@
+<h1> Edit Vehicle </h1>
+<form action="/vehicles/save" method="post">
+   <input type="hidden" name="vehicle_id" value="<%= rec.vehicle_id %>" >
+   <table>
+		<tr> <td> Vehicle Name: </td> <td> <textarea name="vehicle_name" rows="1" cols="20"><%= rec.vehicle_name %> </textarea>  </td> </tr>
+		<tr> <td> Vehicle Description Name: </td> <td> <textarea name="vehicle_description" rows="10" cols="20"><%= rec.vehicle_description %> </textarea> </td> </tr>
+		<tr> <td> Vehicle Amount: </td> <td> <input type="number" name="vehicle_amount" value=<%= rec.vehicle_amount %> required> </td> </tr>
+   </table>
+   <button type="submit">Save</button>
+</form>

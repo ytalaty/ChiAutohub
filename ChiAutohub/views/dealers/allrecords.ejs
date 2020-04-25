@@ -1,0 +1,43 @@
+<h1> Dealers Table Listing </h1>
+<% if (allrecs.length > 0) {%>
+		<table border=1>
+			<tr>
+					<th> Dealer ID </th>
+					<th> Dealer First Name </th>
+					<th> Dealer Last Name </th>
+					<th> Dealer Email </th>
+					<th> Dealer Phone </th>
+					<th> Dealer Address </th>
+					<th> Dealer City </th>
+					<th> Dealer State </th>
+					<th> Dealer Zip </th>
+					<th> Dealer Username </th>
+					<th> Dealer Password </th>
+					<th> Dealer Start Date </th>
+			</tr>
+      	<% allrecs.forEach((recref, index) => { %>
+			<tr>
+				<td><%= recref.dealer_id %></td>
+				<td><%= recref.firstname %></td>
+				<td><%= recref.lastname %></td>
+				<td><%= recref.email %></td>
+				<td><%= recref.phone %></td>
+				<td><%= recref.address %></td>
+				<td><%= recref.city %></td>
+				<td><%= recref.state %></td>
+				<td><%= recref.zip %></td>
+				<td><%= recref.username %></td>
+				<td><%= recref.password %></td>
+				<td><%= recref.dealer_start_date %></td>
+				<td><a href='/dealers/<%= recref.dealer_id %>'> Details</a></td>
+				<td><a href='/dealers/<%= recref.dealer_id %>/edit'>Edit</a></td>
+				<td><a href='/dealers/<%= recref.dealer_id %>/delete' onclick="return confirm('Are you sure you want to delete this record?');">Delete</a></td>
+
+                </tr>
+        <% }); %>
+		</table>
+
+        <% } else { %>
+            <p>Not Records Available</p>
+        <% } %>
+<p> <a href='/dealers/addrecord'>Add New</a> </p>

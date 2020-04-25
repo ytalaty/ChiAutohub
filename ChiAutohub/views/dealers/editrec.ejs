@@ -1,0 +1,18 @@
+<h1> Edit Dealer </h1>
+<form action="/dealers/save" method="post">
+   <input type="hidden" name="dealer_id" value="<%= rec.dealer_id %>" >
+   <table>
+		<tr> <td> Dealer First Name: </td> <td> <input type="text" name="firstname" value=<%= rec.firstname %> required>  </td> </tr>
+		<tr> <td> Dealer Last Name: </td> <td> <input type="text" name="lastname" value=<%= rec.lastname %> required> </td> </tr>
+		<tr> <td> Dealer Email: </td> <td> <input type="text" name="email" value=<%= rec.email %> required> </td> </tr>
+		<tr> <td> Dealer Phone: </td> <td> <input type="text" name="phone" value=<%= rec.phone %> required> </td> </tr>
+		<tr> <td> Dealer Address: </td> <td> <textarea name="address" rows="1" cols="20"><%= rec.address %> </textarea> </td> </tr>
+		<tr> <td> Dealer City: </td> <td> <textarea name="city" rows="1" cols="20"><%= rec.city %> </textarea> </td> </tr>
+		<tr> <td> Dealer State: </td> <td> <textarea name="state" rows="1" cols="20"><%= rec.state %> </textarea> </td> </tr>
+		<tr> <td> Dealer Zip: </td> <td> <input type="text" name="zip" value=<%= rec.zip %> required> </td> </tr>
+		<tr> <td> Dealer Username: </td> <td> <input type="text" name="username" value=<%= rec.username %> required> </td> </tr>
+		<tr> <td> Dealer Password: </td> <td> <input type="text" name="password" value=<%= rec.password %> required> </td> </tr>
+		<tr> <td> Dealer Start Date: </td> <td> <input type="date" name="dealer_start_date" value=<%= rec.dealer_start_date %> required> </td> </tr>
+   </table>
+   <button type="submit">Save</button>
+</form>
