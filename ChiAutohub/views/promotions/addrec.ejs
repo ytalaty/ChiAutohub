@@ -1,0 +1,11 @@
+<h1> Add New Promotion</h1>
+<form action="/promotions" method="post">
+   <table>
+		<tr> <td> Promotion ID: </td> <td> <input type="number" name="promotion_id" required> </td> </tr>
+		<tr> <td> Promotion Name: </td> <td> <textarea name="promotion_name" rows="1" cols="20"> </textarea>  </td> </tr>
+		<tr> <td> Promotion Description: </td> <td> <textarea name="promotion_description" rows="10" cols="20"> </textarea>  </td> </tr>
+		<tr> <td> Vehicle ID: </td> <td> <input type="number" name="vehicle_id" required> </td> </tr>
+		<tr> <td> Create Date: </td> <td> <input type="date" name="create_date" required> </td> </tr>
+   </table>
+   <button type="submit">Save</button>
+</form>
