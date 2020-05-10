@@ -1,8 +1,27 @@
 <h1>ChiAutohub - Used Car Sales </h1>
 <p><b>Welcome to Chicago Autohub!</b></p>
-<p> Choose from a wide variety of used cars! Below are a few pictures of our vehicle inventory.</p>
-<img src="/images/car_dealer.jpg" width="300" height="200">
-<img src="/images/usedcars.jpg" width="300" height="200">
-<img src="/images/tesla.jpg" width="300" height="200">
-<img src="/images/usedcars1.png" width="290" height="200">
+<p> Choose from a wide variety of used cars!</p>
 
+<table width="100%"><tr>
+	<td width="80%">
+	<% if (allrecs.length > 0) {%>
+		<% allrecs.forEach((recref, index) => { %>
+			<product>
+				<table>
+					<tr><td><%= recref.package_name %></td></tr>
+				</table>
+			</product>
+		<% }); %>
+	<% } %>
+	</td>
+	
+	<td width="20%">
+	<% if (promos.length > 0) {%>
+		<table> 
+		<% promos.forEach((pref, index) => { %>
+				<tr><td><%= pref.adimage %></td></tr>
+		<% }); %>
+		</table>
+	<% } %>
+	</td>
+</tr></table>
