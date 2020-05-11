@@ -1,0 +1,30 @@
+<h1> Sales Report </h1>
+<% if (allrecs.length > 0) {%>
+		<table border=1>
+			<tr>
+					<th> Dealer ID </th>
+					<th> Customer ID </th>
+					<th> Sale ID </th>
+					<th> Sale Name </th>
+					<th> Sale Amount </th>
+					<th> Sale Description </th>
+					<th> Sale Date </th>
+					<th> Vehicle ID </th>
+			</tr>
+      	<% allrecs.forEach((recref, index) => { %>
+			<tr>
+				<td><%= recref.dealer_id %></td>
+				<td><%= recref.customer_id %></td>
+				<td><%= recref.sale_id %></td>
+				<td><%= recref.sale_name %></td>
+				<td><%= recref.sale_amount %></td>
+				<td><%= recref.sale_description %></td>
+				<td><%= recref.sale_date %></td>
+				<td><%= recref.vehicle_id %></td>
+                </tr>
+        <% }); %>
+		</table>
+
+        <% } else { %>
+            <p>No Report Available</p>
+        <% } %>

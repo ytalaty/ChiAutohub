@@ -1,0 +1,23 @@
+<h1> Vehicles Report </h1>
+<% if (allrecs.length > 0) {%>
+		<table border=1>
+			<tr>
+					<th> Vehicle ID </th>
+					<th> Vehicle Name </th>
+					<th> Vehicle Description </th>
+					<th> Vehicle Amount </th>
+			</tr>
+      	<% allrecs.forEach((recref, index) => { %>
+			<tr>
+				<td><%= recref.vehicle_id %></td>
+				<td><%= recref.vehicle_name %></td>
+				<td><%= recref.vehicle_description %></td>
+				<td><%= recref.vehicle_amount %></td>
+
+                </tr>
+        <% }); %>
+		</table>
+
+        <% } else { %>
+            <p>No Report Available</p>
+        <% } %>
