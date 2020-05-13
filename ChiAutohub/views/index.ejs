@@ -19,7 +19,8 @@
 	<% if (promos.length > 0) {%>
 		<table> 
 		<% promos.forEach((pref, index) => { %>
-				<tr><td><%= pref.adimage %></td></tr>
+				<tr><td> <%= pref.adtitle %> </td></tr>
+				<tr><td><img src="/images/<%= pref.adimage %>" width=200 height=150></td></tr>
 		<% }); %>
 		</table>
 	<% } %>
