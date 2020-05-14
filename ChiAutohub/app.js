@@ -22,6 +22,8 @@ db.connect((err) => {
 });
 global.db = db;
 
+const cart = [];
+global.cart = cart;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -37,6 +39,7 @@ var packagesRouter = require('./routes/packages');
 var promotionsRouter = require('./routes/promotions');
 var searchRouter = require('./routes/search');
 var reportsRouter = require('./routes/reports');
+var catalogRouter = require('./routes/catalog');
 
 var app = express();
 
@@ -65,6 +68,7 @@ app.use('/packages', packagesRouter);
 app.use('/promotions', promotionsRouter);
 app.use('/search', searchRouter);
 app.use('/reports', reportsRouter);
+app.use('/catalog', catalogRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,17 @@
+<% if (catalog.length > 0) {%>
+	<% catalog.forEach((recref, index) => { %>
+		<product>
+			<table> 
+				<tr><td><%= recref.vehicle_id %></td>
+					<td><%= recref.vehicle_name %></td></tr>
+				<tr><td><%= recref.vehicle_description %></td>
+					<td><%= recref.vehicle_amount %></td></tr>
+				<tr><td>&nbsp;</td>
+					<td><a href='/catalog/<%= recref.vehicle_id %>/add'> Add To Cart</a></td>
+
+			</table>
+		</product>
+	<% }); %>
+<% } else { %>
+        <p>Nothing to Display Now...Please visit us soon...</p>
+<% } %>

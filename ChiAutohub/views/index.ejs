@@ -9,6 +9,7 @@
 			<product>
 				<table>
 					<tr><td><%= recref.package_name %></td></tr>
+					<tr><td> Vehicle ID: <%= recref.vehicle_id %></td></tr>
 				</table>
 			</product>
 		<% }); %>
@@ -17,7 +18,8 @@
 	
 	<td width="20%">
 	<% if (promos.length > 0) {%>
-		<table> 
+		<table>
+		<b><u>Active Promotions</u></b>
 		<% promos.forEach((pref, index) => { %>
 				<tr><td> <%= pref.adtitle %> </td></tr>
 				<tr><td><img src="/images/<%= pref.adimage %>" width=200 height=150></td></tr>
