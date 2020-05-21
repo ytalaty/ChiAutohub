@@ -1,17 +1,39 @@
-<% if (cart.length > 0) {%>
-<p> Here are the vehicles selected in your cart: </p>
+<% var totprice = 0 %>
+<% var lineitemcost = 0 %>
+<% if (cartitems != '0') {%>
+<p> Here products selected in your cart: </p>
 	<table border=1>
 		<tr>
-			<th>Vehicle ID</th>
+			<th>Vehicle Name</th>
+			<th>Description</th>
+			<th>Amount</th>
+			<th>Line Cost</th>
 			<th>Action</th>
-
-      	<% cart.forEach((item, index) => { %>
+		</tr>
+      		<% cartitems.forEach((item, index) => { %>
 			<tr>
-				<td><%= item %></td>
-				<td><a href='/catalog/<%= index %>/remove'> Remove From Cart</a></td>
-            </tr>
-        <% }); %>
+				<td><%= item.vehicle_name %></td>
+				<td><%= item.vehicle_description %></td>
+				<td><%= item.vehicle_amount %></td>
+				<% lineitemcost = item.vehicle_amount  %>
+				<td><%= lineitemcost %> </td>
+				<% totprice = totprice + lineitemcost  %>
+				<td>
+					<form action="/catalog/remove" method="post" >
+						<input type="hidden" name="vehicle_id" value=<%= item.vehicle_id %> >
+						<button type="submit">Remove</button>
+					</form>
+				</td>
+           		 	</tr>
+        		<% }); %>
+		<tr bgcolor="yellow" >
+			<td colspan="2"><b>Totals</b></td>
+			<td><%= totprice %></td>
+			<td><%= totprice %></td>
+			<td><button class='button1' onclick="window.location.href='/catalog/checkout'">Checkout</button></td>
+		</tr>
 	</table>
 <% } else { %>
         <p>Cart Is Empty</p>
 <% } %>
+

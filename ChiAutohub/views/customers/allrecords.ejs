@@ -11,8 +11,6 @@
 					<th> Customer City </th>
 					<th> Customer State </th>
 					<th> Customer Zip </th>
-					<th> Customer Username </th>
-					<th> Customer Password </th>
 					<th> Customer Create Date </th>
 			</tr>
       	<% allrecs.forEach((recref, index) => { %>
@@ -26,8 +24,6 @@
 				<td><%= recref.city %></td>
 				<td><%= recref.state %></td>
 				<td><%= recref.zip %></td>
-				<td><%= recref.username %></td>
-				<td><%= recref.password %></td>
 				<td><%= recref.create_date %></td>
 				<td><a href='/customers/<%= recref.customer_id %>'> Details</a></td>
 				<td><a href='/customers/<%= recref.customer_id %>/edit'>Edit</a></td>

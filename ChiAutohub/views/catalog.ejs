@@ -1,17 +1,18 @@
 <% if (catalog.length > 0) {%>
 	<% catalog.forEach((recref, index) => { %>
-		<product>
+		<product> 
+		<form action="/catalog/add" method="post" >
+		<input type="hidden" name="vehicle_id" value=<%= recref.vehicle_id %> > 
 			<table> 
-				<tr><td><%= recref.vehicle_id %></td>
-					<td><%= recref.vehicle_name %></td></tr>
+				<tr><td><b><%= recref.vehicle_name %></b></td></tr>
 				<tr><td><%= recref.vehicle_description %></td>
-					<td><%= recref.vehicle_amount %></td></tr>
-				<tr><td>&nbsp;</td>
-					<td><a href='/catalog/<%= recref.vehicle_id %>/add'> Add To Cart</a></td>
+				<tr><td><b>Price:<%= recref.vehicle_amount %></b></td></tr>
+				<tr>
+					<td> <button type="submit" class="button1">Add to Cart</button></td>
+				</tr>
 
 			</table>
+		</form>
 		</product>
 	<% }); %>
-<% } else { %>
-        <p>Nothing to Display Now...Please visit us soon...</p>
 <% } %>

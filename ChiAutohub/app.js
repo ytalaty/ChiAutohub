@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var layouts = require('express-ejs-layouts');
+const session = require('express-session');
+
 
 const mariadb = require('mariadb/callback');
 const db = mariadb.createConnection({host: 'eagle.cdm.depaul.edu',
@@ -22,8 +24,6 @@ db.connect((err) => {
 });
 global.db = db;
 
-const cart = [];
-global.cart = cart;
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -42,6 +42,13 @@ var reportsRouter = require('./routes/reports');
 var catalogRouter = require('./routes/catalog');
 
 var app = express();
+
+app.use(session({secret: 'AutohubAppSecret'}));
+app.use(function(req,res,next){
+    res.locals.session = req.session;
+    next();
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

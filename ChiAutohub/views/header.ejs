@@ -2,7 +2,16 @@
 	<td width='60%' align='left'>
 		<a href="/"><img src="/images/logo.png" width="130" height="100"> </a></td> 
     <td width='20%' align='center'><h1>ChiAutohub</h1></td>
-   	 <td width='10%' align='center'>Login Control</td>
+   	 <td width='10%' align='center'>
+		<% if(session.customer_id > 0) { %>
+			<b> Hello <b> <%= session.custname %>! </b> </br>
+			<a href='/customers/logout'>Logout</a> 
+		<% } else { %>
+			<a href='/customers/register'>New Customer</a> </br>
+			<a href='/customers/login'>Login</a> 
+		<% } %>	
+ 
+	 </td>
    	 <td width='10%' align='center'><a href="/catalog/cart">Cart</a></td>
 </tr></table>
 <p><form action="/search" method="get">

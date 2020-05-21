@@ -1,4 +1,5 @@
 var express = require('express');
+var bcrypt = require('bcryptjs');
 var router = express.Router();
 
 
@@ -7,6 +8,63 @@ var router = express.Router();
 // ==================================================
 router.get('/addrecord', function(req, res, next) {
 	res.render('customers/addrec');
+});
+
+// ==================================================
+// Route Enable Registration
+// ==================================================
+router.get('/register', function(req, res, next) {
+	res.render('customers/addrec');
+});
+
+
+// ==================================================
+// Route Provide Login Window
+// ==================================================
+router.get('/login', function(req, res, next) {
+	res.render('customers/login', {message: "Please Login"});
+});
+
+
+// ==================================================
+// Route Check Login Credentials
+// ==================================================
+router.post('/login', function(req, res, next) {
+  let query = "select customer_id, firstname, lastname, password from customers WHERE username = '" + req.body.username + "'"; 
+  // execute query
+  db.query(query, (err, result) => {
+		if (err) {res.render('error');} 
+		else {
+			if(result[0])
+				{
+				// Username was correct. Check if password is correct
+				bcrypt.compare(req.body.password, result[0].password, function(err, result1) {
+					if(result1) {
+						// Password is correct. Set session variables for user.
+						var custid = result[0].customer_id;
+						req.session.customer_id = custid;
+						var custname = result[0].firstname + " "+ result[0].lastname;
+						req.session.custname = custname;
+						res.redirect('/');
+					} else {
+						// password do not match
+						res.render('customers/login', {message: "Wrong Password"});
+					}
+				});
+				}
+			else {res.render('customers/login', {message: "Wrong Username"});}
+		} 
+ 	});
+});
+
+
+// ==================================================
+// Route to logout
+// ==================================================
+router.get('/logout', function(req, res, next) {
+	req.session.customer_id = 0;
+	req.session.custname = "";
+	res.redirect('/');
 });
 
 
@@ -51,14 +109,20 @@ router.post('/', function(req, res, next) {
 
 let insertquery = "INSERT INTO customers (customer_id, firstname, lastname, email, phone, address, city, state, zip, username, password, create_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"; 
 
-db.query(insertquery,[req.body.customer_id, req.body.firstname, req.body.lastname, req.body.email, req.body.phone, req.body.address, req.body.city, req.body.state, req.body.zip, req.body.username, req.body.password, req.body.create_date],(err, result) => {
+bcrypt.genSalt(10, (err, salt) => {
+		bcrypt.hash(req.body.password, salt, (err, hash) => {
+			if(err) { res.render('error');}
+
+db.query(insertquery,[req.body.customer_id, req.body.firstname, req.body.lastname, req.body.email, req.body.phone, req.body.address, req.body.city, req.body.state, req.body.zip, req.body.username, hash, req.body.create_date],(err, result) => {
 	if (err) {
 			console.log(err);
 			res.render('error');
 			} else {
-			res.redirect('/customers');
+			res.redirect('/');
 			}
 		});
+		});
+});
 });
 
 // ==================================================
