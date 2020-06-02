@@ -78,4 +78,34 @@ router.post('/remove', function(req, res, next) {
 });
 
 
+// ==================================================
+// Route save cart items to SALES table
+// ==================================================
+router.get('/checkout', function(req, res, next) {
+	// Check to make sure the customer has logged-in
+	if (typeof req.session.customer_id !== 'undefined' && req.session.customer_id ) {
+		// Save SALES Record:
+		// sale_amount giving hard time
+		// vehicle_id giving hard time
+		let insertquery = "INSERT INTO sales(dealer_id, customer_id, sale_name, sale_amount, sale_description, sale_date, vehicle_id) VALUES (1, ?, 'New Sale', 999 , 'New Sale for new Customer', now(), 5)"; 
+		db.query(insertquery,[req.session.customer_id],(err, result) => {
+			if (err) {
+				console.log(err);
+				res.render('error');
+			} else {
+				// Obtain the order_id value of the newly created SALES Record
+				var order_id = result.insertId;
+				req.session.cart = [];
+				// Display confirmation page
+				res.render('checkout', {ordernum: order_id });
+				}		
+			});
+	}
+	else {
+		// Prompt customer to login
+		res.redirect('/customers/login');
+	}
+});
+
+
 module.exports = router;
